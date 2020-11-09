@@ -1,0 +1,17 @@
+body{
+	background-color: #000;
+	color: #fff;
+}
+
+a{
+	background-color: #fff;
+	border-radius: 9px;
+}
+
+div{
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    margin: 2px;
+    border-radius: 15px;
+}

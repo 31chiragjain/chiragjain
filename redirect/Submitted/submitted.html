@@ -1,0 +1,46 @@
+<h1>Your respnse is submitted. Thank You</h1>
+<h2> You can fill this form also.</h2>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="stylesheet" href="submitted.css">
+<script src = "submitted.js"></script>
+	<a href="../../index.html"> <--To Main Page </a>
+<div>
+<form action = "">
+		<label for ="fName">First Name:</label>
+		<input type = "text" name = "fName" id = "fName" required><br/>
+  		<label for = "lName">Last Name:</label>
+	    <input type = "text" name = "lName" id = "lName" required><br/>
+		<label for = "yesNick">Nickname?:</label>
+		<input id="yesNick" name="yesNick" type="checkbox" value="yes" onchange= "nicknameFunction()"/>	<br/>
+		<section id = "nick">
+			<label for = "nickname">Nickname:</label>
+			<input type = "text" name = "nickname" id = "nickname"><br/>
+		</section>
+
+  	<label>Preferred email address:<input type="email" id="email_addr" name="email1" value = "hola@adios.com" required></label><br>
+	<label>Repeat email address: <input type="email" id="email_repeat" name="email2" required></label><br>
+
+   <label> User Name <input type="text" id="name" name="name" placeholder = "Your Name" required></label><br>
+   <p style="color: red">Password must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters</p>
+   <label>Password:<input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters. For ex. : Aa1aa" name="password" required></label><br>
+   <label>Preferred Password: <input type="password" id="password_repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters. For ex. : Aa1aa" name="password2" onchange = "check()" required></label><br>
+
+   	<fieldset>
+		<legend>Shipping Information</legend>
+		<label for ="shippingName">Name:</label>
+		<input type = "text" name = "shipName" id = "shippingName" required><br/>
+		<label for = "shippingZip">Zip code:</label>
+		<input type = "text" name = "shipZip" id = "shippingZip" pattern = "[0-9]{6}" placeholder="123456" required><br/>
+	
+		<input type="checkbox" id="same" name="same" onchange= "billingFunction()"/>
+	<label for = "same">Is the Billing Information the Same?</label>
+
+		<legend>Billing Information</legend>
+		<label for ="billingName">Name:</label>
+		<input type = "text" name = "billName" id = "billingName" required><br/>
+		<label for = "billingZip">Zip code:</label>
+		<input type = "text" name = "billZip" id = "billingZip" pattern = "[0-9]{6}" placeholder="123456" required><br/>
+	</fieldset>
+	<input type = "submit" value = "Submit" onclick="Submit()" />
+</form>
+</div>  
