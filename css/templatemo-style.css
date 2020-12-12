@@ -136,7 +136,7 @@ html {
 .main-nav li:hover a,
 .main-nav li.active a {
     background: #fff;
-    color: #8c363e;
+    color: #112646;
 }
 
 /* Sidebar Menu */
@@ -188,7 +188,7 @@ html {
 
 .menu .social-network ul li a:hover {
     background-color: #fff;
-    color: #a43f49;
+    color: #112646;
 }
 
 .menu .copyright-text {
@@ -231,7 +231,7 @@ html {
     left: 10%;
   -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
   -webkit-overflow-scrolling: touch;
-  background-color: #a43f49;
+  background-color: #112646;
   box-sizing: border-box;
   height: 100vh;  
   max-height: 100vh !important;
@@ -263,7 +263,7 @@ html {
     position: fixed;
     top: 0;
     left: 0;
-    color: #a43f49;
+    color: #112646;
     background-color: #fff;
     width: 60px;
     height: 60px;
@@ -279,7 +279,7 @@ html {
 #menu-close {
     cursor: pointer;
     text-align: right;
-    color: #a43f49;
+    color: #112646;
     background-color: #fff;
     width: 100%;
     height: 60px;
@@ -315,7 +315,7 @@ html {
 .section-heading .line-dec {
     width: 60px;
     height: 3px;
-    background-color: #a43f49;
+    background-color: #02f7d4;
     margin: 10px auto;
 }
 
@@ -333,7 +333,7 @@ html {
     display: inline-block;
     padding: 12px 20px;
     background-color: #fff;
-    color: #a43f49;
+    color: #112646;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -342,7 +342,7 @@ html {
 }
 
 .white-button a:hover {
-    background-color: #a43f49;
+    background-color: #112646;
     color: #fff;
 }
 
@@ -350,7 +350,7 @@ html {
     display: inline-block;
     padding: 12px 20px;
     background-color: #fff;
-    color: #a43f49;
+    color: #112646;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -368,7 +368,7 @@ button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #fff;
-    color: #a43f49;
+    color: #112646;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -381,7 +381,7 @@ button {
 
 button:hover {
     outline: none;
-    background-color: #a43f49;
+    background-color: #112646;
     color: #fff;
 }
 
@@ -522,8 +522,8 @@ section.my-work .section-heading {
 }
 
 .isotope-toolbar input[type="radio"]:checked + span {
-    color: #a43f49;
-    border-bottom: 2px solid #a43f49;
+    color: #112646;
+    border-bottom: 2px solid #112646;
 }
 
 .isotope-box {
@@ -605,7 +605,7 @@ figure.snip1321 span {
 figure.snip1321 i {
   position: relative!important;
   font-size: 18px;
-  background-color: #a43f49;
+  background-color: #112646;
   width: 40px;
   height: 40px;
   display: inline-block;
