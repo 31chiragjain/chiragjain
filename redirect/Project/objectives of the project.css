@@ -1,10 +1,21 @@
-p{
-	font-size: 30px;
+#page-wraper {
+    background: url(../../images/page-bg.jpg) no-repeat  fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-p:hover{
-	background-color: #e8e8e8;
+body{
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 25px;
 }
-h2{
-	font-size: 60px;
+
+h1{
+	font-size: 40px;
 }

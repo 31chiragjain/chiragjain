@@ -1,15 +1,33 @@
-body{
-	background-color: #000;
-	color: #fff;
+#page-wraper {
+    background: url(../../images/page-bg.jpg) no-repeat  fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 section{
-	display: flex;
+	display: inline-flex;
 }
+
+.SoftwarePart{
+	width: 40%;
+	border-radius: 30px;
+	padding-right: 10px;
+}
+
+.MethodologyPart{
+	width: 50%;
+	border-radius: 20px;
+}
+
 h3{
 	font-size: 35px;
 	text-align: center;
-}
-img{
-	padding-right: 10px;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
