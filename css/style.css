@@ -62,12 +62,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, .h1 {
-  font-size: 80px;
+  font-size: 50px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 650px) {
   h1, .h1 {
-    font-size: 65px;
+    font-size: 50px;
+  }
+}
+
+h1, .h1 {
+  font-size: 50px;
+}
+
+@media (max-width: 500px) {
+  h1, .h1 {
+    font-size: 40px;
+  }
+}
+
+.ml10 {
+  font-size: 50px;
+}
+
+@media (max-width: 500px) {
+  .ml10 {
+    font-size: 40px;
   }
 }
 
@@ -78,6 +98,16 @@ h2, .h2 {
 @media (max-width: 991px) {
   h2, .h2 {
     font-size: 50px;
+  }
+}
+
+h2, .h2 {
+  font-size: 50px;
+}
+
+@media (max-width: 500px) {
+  h2, .h2 {
+    font-size: 40px;
   }
 }
 
