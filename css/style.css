@@ -489,7 +489,7 @@ textarea.form-control {
 @media (max-width: 991px) {
   .navigation {
     padding: 20px;
-    background: #41228e;
+    background: #000;
   }
 }
 
@@ -966,4 +966,10 @@ blockquote {
           padding: 0px;
         }
  }
+
+ @media (max-width: 799px) {
+  #bar {
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=maps/style.css.map */
