@@ -926,4 +926,50 @@ blockquote {
   font-weight: bold;
 }
 
+@media (max-width: 1000px) {
+        .bg-shape-3, .bg-shape-6, #bg-shape-3, #bg-shape-6 {
+          display: none;
+        }
+ }
+
+ @media (max-width: 600px) {
+        #button {
+          font-size: 50px;
+        }
+ }
+
+ .mb-3{
+  padding: 0px 20px;
+  font-size: 40px;
+  width: 90px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0px 20px;
+  display: inline-block;
+  position: relative;
+  right: -30%;
+}
+
+ @media (max-width: 800px) {
+        .mb-3 {
+          font-size: 30px;
+          width: 70px;
+          padding: 0px 10px;
+        }
+ }
+
+ @media (max-width: 1000px) {
+        .mb-3 {
+          position: initial;
+          right: 0%;
+        }
+ }
+ 
+ @media (max-width: 799px) {
+        .mb-3 {
+          font-size: 20px;
+          width: 30px;
+          padding: 0px;
+        }
+ }
 /*# sourceMappingURL=maps/style.css.map */
