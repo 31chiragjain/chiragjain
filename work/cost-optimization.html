@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost Optimization Tool (Agentic AI) — Case Study · Chirag Jain</title>
+<meta name="description" content="Case study: an Agentic AI tool that analyzes GCP spend, flags anomalies and recommends optimization actions — paired with a Regulatory Reporting workstream.">
+<link rel="canonical" href="https://31chiragjain.github.io/chiragjain/work/cost-optimization.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f8f8f6" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cost Optimization Tool (Agentic AI) — Case Study">
+<meta property="og:description" content="Agentic AI tool that analyzes GCP spend and recommends optimization actions.">
+<meta property="og:url" content="https://31chiragjain.github.io/chiragjain/work/cost-optimization.html">
+<meta property="og:image" content="https://31chiragjain.github.io/chiragjain/assets/og-cover.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html#top" class="brand">chirag jain<span class="b"> / data engineer</span></a>
+    <div class="nav-links" id="links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../assets/Chirag-Jain-Resume.pdf" target="_blank" rel="noopener" download="Chirag-Jain-Resume.pdf">Resume</a>
+      <a href="../index.html#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<article>
+<header class="cs-head">
+  <div class="cs-breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#work">Work</a> &nbsp;/&nbsp; Cost Optimization Tool</div>
+  <h1 class="cs-title">Cost Optimization Tool powered by Agentic AI</h1>
+  <p class="cs-tagline">An Agentic AI system that watches GCP spend, pinpoints waste and recommends optimization actions — paired with a Regulatory Reporting workstream for compliance delivery.</p>
+  <div class="cs-meta"><span>Role: Lead Engineer</span><span>Status: In Progress</span><span>Stack: Agentic AI · Gemini · GCP · Python · BigQuery</span><span>Dec 2025 – Present</span></div>
+  <div class="cs-metrics">
+    <div class="cs-metric"><div class="n">↓ Spend</div><div class="l">Target: 15–25% monthly</div></div>
+    <div class="cs-metric"><div class="n">24/7</div><div class="l">Autonomous monitoring</div></div>
+    <div class="cs-metric"><div class="n">Multi-agent</div><div class="l">Detect · Diagnose · Recommend</div></div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <h3>The problem</h3>
+  <p>A large enterprise running hundreds of GCP services across BigQuery, Dataflow, GKE and Cloud Composer was leaking spend to idle resources, over-provisioned slots, redundant data copies and inefficient query patterns. Monthly FinOps reviews caught problems <strong>weeks after the money was already spent</strong>, and recommendations never made it back to the teams who owned the workloads.</p>
+  <p>Parallel to this, the Regulatory Reporting workstream needed auditable, timely visibility into how data flowed through those same services for compliance filings — the two workstreams shared infrastructure, lineage and accountability.</p>
+</section>
+
+<section class="cs-section">
+  <h3>The approach</h3>
+  <p>Built a multi-agent system where each agent owns a bounded responsibility and hands off structured output to the next:</p>
+  <ul>
+    <li><strong>Observer Agent</strong> — polls GCP Billing API, BigQuery INFORMATION_SCHEMA, Composer DAG metrics and GKE utilization into a unified cost-signal store.</li>
+    <li><strong>Anomaly Agent</strong> — flags cost drift, idle resources, suboptimal slot reservations and runaway query patterns using statistical baselines + Gemini-based reasoning.</li>
+    <li><strong>Diagnosis Agent</strong> — correlates anomalies with recent deploys, DAG changes, data volume shifts and ownership metadata to attribute root cause.</li>
+    <li><strong>Recommendation Agent</strong> — produces a human-readable action plan with risk tier, estimated savings and the exact owner / Jira project to assign.</li>
+    <li><strong>Reporting Agent</strong> — publishes the same evidence trail into the Regulatory Reporting pipeline so compliance and FinOps share one source of truth.</li>
+  </ul>
+</section>
+
+<section class="cs-section">
+  <h3>Architecture (simplified)</h3>
+  <pre class="cs-arch">GCP Billing  ─┐
+BigQuery     ─┤                     ┌─ Jira / Email ─ Owner
+Composer     ─┼─► Observer ─► Store ─► Anomaly ─► Diagnosis ─► Recommendation ─┤
+GKE          ─┘            (BigQuery)  (Gemini)    (Gemini)      (Gemini)      └─ Reg. Reporting
+                                                                                   (dashboard)</pre>
+</section>
+
+<section class="cs-section">
+  <h3>Why Agentic AI (vs. a script)</h3>
+  <ul>
+    <li>Cost anomalies rarely have a single clean cause — reasoning across billing, lineage and recent changes is naturally agentic.</li>
+    <li>Each stage emits structured facts the next stage can audit — fully traceable, unlike a monolithic LLM prompt.</li>
+    <li>New signals (e.g. carbon footprint, data residency) plug in as additional agents without rewriting the pipeline.</li>
+  </ul>
+</section>
+
+<section class="cs-section">
+  <h3>What's next</h3>
+  <ul>
+    <li>Close the loop with autonomous remediation for low-risk fixes (idle instance stop, partitioning hints).</li>
+    <li>Expand coverage to Vertex AI inference costs and cross-project egress.</li>
+    <li>Open-source a reference implementation stripped of enterprise specifics.</li>
+  </ul>
+</section>
+
+<a class="cs-back" href="../index.html#work">&larr; Back to work</a>
+</article>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="c">© <span id="yr"></span> Chirag Jain · Built from scratch. <span class="updated">· Last updated <time id="lastUpdated" datetime="">Oct 1, 2026</time></span></span>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/chirag-jain31" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/31chiragjain" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+      <a href="mailto:31chiragjain@gmail.com" aria-label="Email">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

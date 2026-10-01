@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI Cloud Discovery Accelerator — Case Study · Chirag Jain</title>
+<meta name="description" content="Case study: an Agentic AI accelerator built on Google Gemini that analyzes GCP codebases, extracts Airflow DAG lineage and generates interactive HTML flow visualizations.">
+<link rel="canonical" href="https://31chiragjain.github.io/chiragjain/work/discovery-accelerator.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f8f8f6" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agentic AI Cloud Discovery Accelerator — Case Study">
+<meta property="og:description" content="How Gemini + an AST parser auto-maps lineage across hundreds of enterprise applications.">
+<meta property="og:url" content="https://31chiragjain.github.io/chiragjain/work/discovery-accelerator.html">
+<meta property="og:image" content="https://31chiragjain.github.io/chiragjain/assets/og-cover.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html#top" class="brand">chirag jain<span class="b"> / data engineer</span></a>
+    <div class="nav-links" id="links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../assets/Chirag-Jain-Resume.pdf" target="_blank" rel="noopener" download="Chirag-Jain-Resume.pdf">Resume</a>
+      <a href="../index.html#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<article>
+<header class="cs-head">
+  <div class="cs-breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#work">Work</a> &nbsp;/&nbsp; Discovery Accelerator</div>
+  <h1 class="cs-title">Agentic AI Cloud Discovery Accelerator</h1>
+  <p class="cs-tagline">Gemini + an AST parser that reads an enterprise GCP codebase, resolves cross-file dependencies, extracts Airflow DAG lineage and ships an interactive HTML flow visualization the migration team actually uses.</p>
+  <div class="cs-meta"><span>Role: Lead Engineer</span><span>Status: Production</span><span>Stack: Agentic AI · Google Gemini · Python · GCP · D3</span></div>
+  <div class="cs-metrics">
+    <div class="cs-metric"><div class="n">300+</div><div class="l">Applications analyzed</div></div>
+    <div class="cs-metric"><div class="n">65%</div><div class="l">Manual discovery effort removed</div></div>
+    <div class="cs-metric"><div class="n">+40%</div><div class="l">Lineage accuracy vs. baseline</div></div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <h3>The problem</h3>
+  <p>A 300+ application migration from on-prem to GCP needed a lineage map per application: what tables are read, what tables are written, which DAGs depend on which, and where the risky cross-file references live. Doing it by hand was taking engineers <strong>2–3 days per app</strong>, and the maps rotted the moment the codebase changed.</p>
+  <p>Pure static analysis caught the easy cases but broke on dynamic SQL, templated Jinja and operators that construct names at runtime.</p>
+</section>
+
+<section class="cs-section">
+  <h3>The approach</h3>
+  <p>A hybrid: deterministic parsing where it works, Gemini where it doesn't. See the interactive diagram on the <a href="../index.html#work">home page</a> for a hover-through of the pipeline.</p>
+  <ul>
+    <li><strong>AST Parser</strong> — Python AST walks over DAG definitions and operators to pull imports, task graph, SQL strings, GCS paths and params.</li>
+    <li><strong>Gemini Analyzer</strong> — resolves dynamic names, templated SQL and non-obvious lineage. Returns structured JSON with a confidence score per edge.</li>
+    <li><strong>Dependency Graph</strong> — networkx builds the full lineage; low-confidence edges get flagged for human review.</li>
+    <li><strong>HTML Flow Viz</strong> — interactive D3 visualization: searchable, filterable, per-table lineage and risk tiers.</li>
+  </ul>
+</section>
+
+<section class="cs-section">
+  <h3>Architecture (simplified)</h3>
+  <pre class="cs-arch">GCP Codebase ──► AST Parser ──► Gemini Analyzer ──► Dependency Graph ──► HTML Flow Viz
+                  (static)       (Agentic AI)         (networkx)             (D3 · Jinja)</pre>
+</section>
+
+<section class="cs-section">
+  <h3>What made it work</h3>
+  <ul>
+    <li><strong>LLM only where static analysis fails</strong> — kept cost down and accuracy up. Deterministic layer handled 70%, Gemini handled the hard 30%.</li>
+    <li><strong>Confidence per edge</strong> — the migration team trusted the graph because they could see what was certain vs. inferred.</li>
+    <li><strong>Interactive output</strong> — a browsable HTML report beat a static PDF every time. Engineers kept it open on a second monitor.</li>
+    <li><strong>Re-run cheap</strong> — the whole pipeline runs in minutes per app, so the lineage stays fresh as the codebase changes.</li>
+  </ul>
+</section>
+
+<section class="cs-section">
+  <h3>Results</h3>
+  <ul>
+    <li>Manual discovery effort down <strong>65%</strong> across the 300+ app program.</li>
+    <li>Lineage accuracy up <strong>40%</strong> vs. the earlier static-only baseline.</li>
+    <li>Further ~20% reduction in rework as teams caught lineage gaps before migration, not after.</li>
+  </ul>
+</section>
+
+<a class="cs-back" href="../index.html#work">&larr; Back to work</a>
+</article>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="c">© <span id="yr"></span> Chirag Jain · Built from scratch. <span class="updated">· Last updated <time id="lastUpdated" datetime="">Oct 1, 2026</time></span></span>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/chirag-jain31" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/31chiragjain" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+      <a href="mailto:31chiragjain@gmail.com" aria-label="Email">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

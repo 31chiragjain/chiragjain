@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://31chiragjain.github.io/chiragjain/sitemap.xml

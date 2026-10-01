@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI RCA Analyzer &amp; Pipeline Debugger — Case Study · Chirag Jain</title>
+<meta name="description" content="Case study: an Agentic AI-driven RCA Analyzer built on Gemini 2.5 Pro that automates root cause analysis of pipeline failures and cuts debugging time by 30%.">
+<link rel="canonical" href="https://31chiragjain.github.io/chiragjain/work/rca-analyzer.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f8f8f6" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agentic AI RCA Analyzer &amp; Pipeline Debugger — Case Study">
+<meta property="og:description" content="Agentic AI-driven RCA that cuts pipeline debugging time by 30% using Gemini 2.5 Pro.">
+<meta property="og:url" content="https://31chiragjain.github.io/chiragjain/work/rca-analyzer.html">
+<meta property="og:image" content="https://31chiragjain.github.io/chiragjain/assets/og-cover.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html#top" class="brand">chirag jain<span class="b"> / data engineer</span></a>
+    <div class="nav-links" id="links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../assets/Chirag-Jain-Resume.pdf" target="_blank" rel="noopener" download="Chirag-Jain-Resume.pdf">Resume</a>
+      <a href="../index.html#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<article>
+<header class="cs-head">
+  <div class="cs-breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#work">Work</a> &nbsp;/&nbsp; RCA Analyzer</div>
+  <h1 class="cs-title">Agentic AI RCA Analyzer &amp; Pipeline Debugger</h1>
+  <p class="cs-tagline">Gemini 2.5 Pro agents that read failed Airflow runs, correlate logs with history, and hand on-call a confidence-scored diagnosis and recommended fix — before they've even opened the DAG.</p>
+  <div class="cs-meta"><span>Role: Lead Engineer</span><span>Status: Production</span><span>Stack: Gemini 2.5 Pro · Airflow · GCP · Python</span></div>
+  <div class="cs-metrics">
+    <div class="cs-metric"><div class="n">↓ 30%</div><div class="l">Debugging time per incident</div></div>
+    <div class="cs-metric"><div class="n">&lt; 60s</div><div class="l">From failure to RCA draft</div></div>
+    <div class="cs-metric"><div class="n">0.0–1.0</div><div class="l">Confidence score per diagnosis</div></div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <h3>The problem</h3>
+  <p>Airflow DAGs across the enterprise failed frequently for mundane but noisy reasons — schema drift, auth rotations, transient GCS throttling, upstream data arriving late. On-call engineers spent most of their shift repeating the same triage: open log, read traceback, scan recent commits, check upstream health, write a RCA. Mean time to diagnosis was <strong>45–60 minutes</strong> even when the fix was a one-liner.</p>
+</section>
+
+<section class="cs-section">
+  <h3>The approach</h3>
+  <p>A chain of Gemini 2.5 Pro agents that run automatically when a DAG fails:</p>
+  <ul>
+    <li><strong>Collector</strong> — pulls the failed task's logs, upstream task state, recent code changes (Git), schema snapshots and the last 10 historical failures of the same task.</li>
+    <li><strong>Classifier</strong> — categorizes the failure (SchemaDrift · AuthExpired · UpstreamLate · ResourceLimit · UnknownException) and attaches a confidence score.</li>
+    <li><strong>Historian</strong> — queries past incidents for near-matches by stack trace embedding + task fingerprint; surfaces the fix that resolved them.</li>
+    <li><strong>Writer</strong> — generates the RCA document: summary, timeline, root cause with evidence, recommended fix (one-liner where possible), owners to notify.</li>
+  </ul>
+  <p>Output drops into a structured incident doc + Slack thread; the on-call reviews rather than writes from scratch.</p>
+</section>
+
+<section class="cs-section">
+  <h3>Architecture (simplified)</h3>
+  <pre class="cs-arch">Airflow Failure Event
+        │
+        ▼
+  Collector (logs + git + schema + history)
+        │
+        ▼
+  Classifier (Gemini 2.5 Pro)  ──►  Historian (vector search over past RCAs)
+        │                               │
+        └──────────► Writer ◄───────────┘
+                        │
+                        ▼
+            Incident Doc  +  Slack thread  +  Jira ticket</pre>
+</section>
+
+<section class="cs-section">
+  <h3>What made it work</h3>
+  <ul>
+    <li><strong>Confidence-scored output</strong> — on-call ignores low-confidence recommendations instead of being misled by them.</li>
+    <li><strong>Historical correlation</strong> — most "new" incidents are repeats; past fixes are the strongest signal.</li>
+    <li><strong>Narrow prompts per agent</strong> — classifier only classifies, writer only writes. Each step is independently testable.</li>
+    <li><strong>Human-in-the-loop</strong> — the RCA is a draft, not a decision. Engineers edit, Jira tracks the final version.</li>
+  </ul>
+</section>
+
+<section class="cs-section">
+  <h3>Results</h3>
+  <ul>
+    <li>Debugging time cut by <strong>~30%</strong> across the pilot team (measured over 6 weeks, N≈120 incidents).</li>
+    <li>RCA documentation went from "sometimes" to "every incident" — compliance teams noticed.</li>
+    <li>Repeat incidents down because every past fix is now searchable, not buried in Slack history.</li>
+  </ul>
+</section>
+
+<a class="cs-back" href="../index.html#work">&larr; Back to work</a>
+</article>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="c">© <span id="yr"></span> Chirag Jain · Built from scratch. <span class="updated">· Last updated <time id="lastUpdated" datetime="">Oct 1, 2026</time></span></span>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/chirag-jain31" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/31chiragjain" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+      <a href="mailto:31chiragjain@gmail.com" aria-label="Email">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>
